@@ -1,15 +1,18 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import home from ""
+import { Routes, Route } from "react-router-dom";
+import Home from "@/page/home";
+import LittleCode from "@/page/littleCode";
+import AccountManager from "@/page/perssionManager/accountManager";
+import RoleManager from "@/page/perssionManager/roleManager";
+
 const RoutePage = () => {
   return (
-    <div className="App">
-      <h1>Welcome to React Router!</h1>
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="about" element={<About />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/home" element={<Home />} />
+      <Route path="/littleCode" element={<LittleCode />} />
+      <Route path="/accountManager" element={<AccountManager />} />
+      <Route path="/roleManager" element={<RoleManager />} />
+    </Routes>
   );
 };
 export default RoutePage;
