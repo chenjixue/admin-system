@@ -16,9 +16,6 @@ const { Header, Sider, Content } = Layout;
 const App = () => {
   const [collapsed, setCollapsed] = useState(false)
   const toggle = useCallback(() => {
-    // this.setState({
-    //   collapsed: !this.state.collapsed,
-    // });
     setCollapsed(!collapsed)
   }, [collapsed]);
   const nav = useNavigate()
