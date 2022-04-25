@@ -1,43 +1,22 @@
-import React from "react";
-import { Table, Tag, Space } from "antd";
+import React, { useState } from "react";
+import { Table, Space, Button } from "antd";
 import DeleteButton from "./component/tipButton";
+import AddAcountModal from "./component/addAcountModal";
 const columns = [
   {
-    title: "用户名",
-    dataIndex: "userName",
-    key: "userName",
-  },
-  {
-    title: "用户账号",
-    dataIndex: "userAcount",
-    key: "userAcount",
-  },
-  {
-    title: "用户角色",
-    key: "userRole",
-    dataIndex: "userRole",
-    render: (tags) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? "geekblue" : "green";
-          if (tag === "loser") {
-            color = "volcano";
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
+    title: "角色名",
+    dataIndex: "roleName",
+    key: "roleName",
+    width: 500,
   },
   {
     title: "Action",
     key: "action",
+    width: 500,
     render: (text, record) => (
       <Space size="middle">
         <a href="#">编辑</a>
+        <a href="#">分配页面</a>
         <DeleteButton text="删除"></DeleteButton>
       </Space>
     ),
@@ -46,29 +25,28 @@ const columns = [
 
 const data = [
   {
+    roleName: "陈学",
     key: "1",
-    userName: "陈管",
-    userAcount: 32,
-    userRole: ["超级管理员", "时间管理大师"],
   },
   {
+    roleName: "超级管理员",
     key: "2",
-    userName: "陈双",
-    userAcount: 32,
-    userRole: ["开发人员"],
   },
   {
+    roleName: "时间管理大师",
     key: "3",
-    userName: "陈梦",
-    userAcount: 32,
-    userRole: ["开发人员"],
-  },
-  {
-    key: "4",
-    userName: "陈吉学",
-    userAcount: 32,
-    userRole: ["开发人员"],
   },
 ];
 
-export default () => <Table columns={columns} dataSource={data} />;
+export default () => {
+  let [visible, setVisible] = useState(false);
+  return (
+    <>
+      <AddAcountModal visible={visible} setVisible={setVisible}></AddAcountModal>
+      <Button type="primary" onClick={() => setVisible(!visible)}>
+        新增账号
+      </Button>
+      <Table columns={columns} dataSource={data} />;
+    </>
+  );
+};

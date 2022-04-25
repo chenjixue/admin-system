@@ -76,7 +76,7 @@ const App = () => {
             minHeight: 280,
           }}
         >
-          <RoutePage></RoutePage>
+          {/* <RoutePage></RoutePage> */}
         </Content>
       </Layout>
     </Layout>
