@@ -7,9 +7,9 @@ import {
   VideoCameraOutlined,
   UploadOutlined,
 } from '@ant-design/icons';
-import RoutePage from './router';
 import {
   useNavigate,
+  Outlet
 } from "react-router-dom";
 const { Header, Sider, Content } = Layout;
 
@@ -76,7 +76,7 @@ const App = () => {
             minHeight: 280,
           }}
         >
-          {/* <RoutePage></RoutePage> */}
+          <Outlet />
         </Content>
       </Layout>
     </Layout>

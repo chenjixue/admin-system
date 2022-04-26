@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Table, Space, Button } from "antd";
 import DeleteButton from "./component/tipButton";
 import AddAcountModal from "./component/addAcountModal";
+import { Link } from "react-router-dom";
 const columns = [
   {
     title: "角色名",
@@ -16,7 +17,8 @@ const columns = [
     render: (text, record) => (
       <Space size="middle">
         <a href="#">编辑</a>
-        <a href="#">分配页面</a>
+        {/* <a href="#">分配页面</a> */}
+        <Link to={"/configPage"}>分配页面</Link>
         <DeleteButton text="删除"></DeleteButton>
       </Space>
     ),
@@ -42,7 +44,10 @@ export default () => {
   let [visible, setVisible] = useState(false);
   return (
     <>
-      <AddAcountModal visible={visible} setVisible={setVisible}></AddAcountModal>
+      <AddAcountModal
+        visible={visible}
+        setVisible={setVisible}
+      ></AddAcountModal>
       <Button type="primary" onClick={() => setVisible(!visible)}>
         新增账号
       </Button>
